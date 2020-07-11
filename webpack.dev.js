@@ -8,7 +8,7 @@ module.exports = merge(common, {
     mode: 'development',
     entry: {
         library: './src/index.js',
-        usage: './src/dev-usage.js',
+        usage: './src/dev/usage-script.js',
     },
     devtool: 'source-map',
     devServer: {
@@ -21,6 +21,7 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             inject: true,
+            title: 'Emails Input Library',
             template: path.resolve(__dirname, 'public/index.html'),
         }),
     ],
