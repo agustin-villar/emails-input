@@ -1,0 +1,23 @@
+## Project
+dist/*
+
+## Node.js
+logs
+results
+npm-debug.log
+node_modules
+
+## Sass
+.sass-cache
+
+## OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+## IDE
+.idea
