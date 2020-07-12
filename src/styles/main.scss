@@ -1,5 +1,8 @@
-// mixins
+// // main imports
+@import "./abstract/variables";
+
+// // mixins
 @import "./mixins/mixins";
 
-// main imports
-@import "./abstract/variables";
+// components
+@import "./components/emails-input";

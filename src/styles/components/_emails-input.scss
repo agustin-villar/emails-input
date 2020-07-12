@@ -1,0 +1,79 @@
+@use 'sass:math';
+
+.emails-input {
+    background-color: $color-white;
+    border: 1px solid $color-light-gray;
+    border-radius: get-spacing(0.5);
+    display: flex;
+    padding: get-spacing(1);
+    
+    &__mails-list {
+        align-content: flex-start;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: $input-height;
+        list-style: none;
+        margin: 0;
+        overflow: scroll;
+        padding: 0;
+    }
+
+    &__mail-item {
+        background-color: $color-transparent-blue;
+        border-radius: 100px;
+        color: $color-dark-blue;
+        line-height: 171%;
+        font-size: 0.875rem;
+        margin: 0 get-spacing(1) get-spacing(0.5) 0;
+        padding: 0 get-spacing(3) 0 get-spacing(1);
+        position: relative;
+
+        &--wrong {
+            background-color: transparent;
+            border-bottom: 1px dashed $color-red;
+            border-radius: 0;
+            padding-left: 0;
+        }
+    }
+
+    &__input {
+        border: 0;
+        font-size: 0.875rem;
+        line-height: 171%;
+        margin-bottom: get-spacing(0.5);
+        padding: 0;
+    }
+
+    &__remove-email {
+        background-color: transparent;
+        border: 0;
+        box-sizing: content-box;
+        cursor: pointer;
+        font-size: 0;
+        height: $remove-button-size;
+        padding: get-spacing(0.5);
+        position: absolute;
+        right: get-spacing(0.5);
+        top: 50%;
+        transform: translateY(-50%);
+        width: $remove-button-size;
+
+        &:before,
+        &:after {
+            background: $color-dark-blue;
+            content: '';
+            display: block;
+            height: math.hypot($remove-button-size, $remove-button-size);
+            left: 7px;
+            position: absolute;
+            top: 2px;
+            transform: rotate(45deg);
+            width: 1px;
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+}

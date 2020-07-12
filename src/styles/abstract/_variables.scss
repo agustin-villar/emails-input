@@ -3,6 +3,17 @@
 $main-font-family: 'Arial', 'Helvetica', sans-serif;
 
 // Colors
-$black: #000;
-$white: #fff;
-$red: #f00;
+$color-black: #000;
+$color-white: #fff;
+$color-light-gray: #C3C2CF;
+$color-red: #D92929;
+$color-dark-blue: #050038;
+$color-transparent-blue: rgba(102, 153, 255, 0.2);
+
+// Spacing
+$base-spacing: 8px;
+
+// Dimensions
+$mail-rows-count: 3;
+$input-height: (24px + 4px) * $mail-rows-count;
+$remove-button-size: 8px;
