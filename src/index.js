@@ -1,30 +1,31 @@
-import { strings } from './config/index';
-import { getEmailsFromInput, checkEmail } from './utils/index';
+import { getEmailsFromInput, checkEmail, createHTMLElement } from './utils/index';
 import './styles/main.scss';
 
 const classPrefix = 'emails-input';
+const placeholder = 'add more people...';
+const removeLabel = 'remove';
 
 class EmailsInput {
     constructor(el) {
         const container = el;
-        const wrapper = document.createElement('DIV');
-        wrapper.classList.add(classPrefix);
+        const wrapper = createHTMLElement('DIV', [classPrefix]);
 
-        this.emailsList = document.createElement('UL');
-        this.emailsList.classList.add(`${classPrefix}__mails-list`);
-
-        this.emailInput = document.createElement('INPUT');
-        this.emailInput.classList.add(`${classPrefix}__input`);
-        this.emailInput.placeholder = strings.PLACEHOLDER;
-
+        this.emailsList = createHTMLElement('UL', [`${classPrefix}__mails-list`]);
+        this.emailInput = createHTMLElement(
+            'INPUT',
+            [`${classPrefix}__input`],
+            '',
+            { placeholder },
+        );
         this.emailsList.appendChild(this.emailInput);
-        wrapper.appendChild(this.emailsList);
-        container.appendChild(wrapper);
 
         this.emailInput.addEventListener('keyup', this.onKeyUp.bind(this));
         this.emailInput.addEventListener('blur', this.onInputBlur.bind(this));
         this.emailInput.addEventListener('paste', this.onInputPaste.bind(this));
         this.emailsList.addEventListener('click', this.onListClick.bind(this));
+
+        wrapper.appendChild(this.emailsList);
+        container.appendChild(wrapper);
     }
 
     addNewEmail(textInput) {
@@ -34,19 +35,20 @@ class EmailsInput {
             this.emailInput.value = '';
 
             possibleEmails.forEach((item) => {
-                const newEmail = document.createElement('LI');
-                newEmail.classList.add(`${classPrefix}__mail-item`);
+                const newEmail = createHTMLElement(
+                    'LI',
+                    [`${classPrefix}__mail-item`, checkEmail(item) ? '' : `${classPrefix}__mail-item--wrong`],
+                    item,
+                );
 
-                const closeButton = document.createElement('BUTTON');
-                closeButton.classList.add(`${classPrefix}__remove-email`);
-                closeButton.type = 'button';
-                closeButton.innerText = 'Remove';
+                const closeButton = createHTMLElement(
+                    'BUTTON',
+                    [`${classPrefix}__remove-email`],
+                    removeLabel,
+                    { type: 'button' },
+                );
 
-                newEmail.innerText = item;
                 newEmail.dataset.value = item;
-                if (!checkEmail(item)) {
-                    newEmail.classList.add(`${classPrefix}__mail-item--wrong`);
-                }
                 newEmail.appendChild(closeButton);
                 this.emailsList.appendChild(newEmail);
             });
@@ -56,7 +58,7 @@ class EmailsInput {
     }
 
     onKeyUp(e) {
-        // 188 = ',', 13 = Enter
+        // 188 = ',' | 13 = Enter
         switch (e.keyCode) {
         case 188:
         case 13:

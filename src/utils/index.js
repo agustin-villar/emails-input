@@ -5,8 +5,27 @@ function checkEmail(email) {
 }
 
 function getEmailsFromInput(input) {
-    // ivan@mail.ru, max@mail.ru,   ivan@mail, max@mail.ru, ivan@mail.ru, max@mail.ru,
     return input.replace(/ /g, '').split(',').filter((val) => val);
 }
 
-export { checkEmail, getEmailsFromInput };
+function createHTMLElement(tagName, classNames, innerText, attributes) {
+    const element = document.createElement(tagName);
+
+    if (classNames) {
+        element.classList.add(...classNames.filter((className) => className));
+    }
+
+    if (innerText) {
+        element.innerText = innerText;
+    }
+
+    if (attributes) {
+        Object.keys(attributes).forEach((key) => {
+            element[key] = attributes[key];
+        });
+    }
+
+    return element;
+}
+
+export { checkEmail, getEmailsFromInput, createHTMLElement };
