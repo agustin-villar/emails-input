@@ -5,3 +5,7 @@ const emailsInput = EmailsInput(inputContainer);
 
 const emailsContainer = document.querySelector('#emails-component');
 const emailsInputB = EmailsInput(emailsContainer);
+
+emailsInput.addNewEmail('hellothere,lollolo@gmail.com');
+
+emailsInputB.addNewEmail('chocoloco@gmail.com,adsfasf');

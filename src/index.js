@@ -78,6 +78,10 @@ function EmailsInput(el) {
     wrapper.appendChild(emailsList);
     wrapper.appendChild(emailInput);
     container.appendChild(wrapper);
+
+    return ({
+        addNewEmail,
+    });
 }
 
 export default EmailsInput;
