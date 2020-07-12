@@ -1,87 +1,85 @@
 import { strings } from './config/index';
 import { getEmailsFromInput, checkEmail } from './utils/index';
+import './styles/main.scss';
 
-function EmailsInput(el) {
-    const container = el;
+class EmailsInput {
+    constructor(el) {
+        const container = el;
+        const wrapper = document.createElement('DIV');
+        wrapper.classList.add('emails-input');
 
-    const wrapper = document.createElement('DIV');
-    const emailsList = document.createElement('UL');
-    const emailInput = document.createElement('INPUT');
-    emailInput.placeholder = strings.PLACEHOLDER;
+        this.emailsList = document.createElement('UL');
+        this.emailsList.classList.add('emails-input__mails-list');
 
-    function addNewEmail(textInput) {
+        this.emailInput = document.createElement('INPUT');
+        this.emailInput.classList.add('emails-input__input');
+        this.emailInput.placeholder = strings.PLACEHOLDER;
+
+        this.emailInput.addEventListener('keyup', this.onKeyUp.bind(this));
+        this.emailInput.addEventListener('blur', this.onInputBlur.bind(this));
+        this.emailInput.addEventListener('paste', this.onInputPaste.bind(this));
+        this.emailsList.addEventListener('click', this.onListClick.bind(this));
+
+        this.emailsList.appendChild(this.emailInput);
+        wrapper.appendChild(this.emailsList);
+        container.appendChild(this.wrapper);
+    }
+
+    addNewEmail(textInput) {
         const possibleEmails = getEmailsFromInput(textInput);
 
         if (possibleEmails) {
+            this.emailInput.value = '';
+
             possibleEmails.forEach((item) => {
                 const newEmail = document.createElement('LI');
+                newEmail.classList.add('emails-input__mail-item');
+
                 const closeButton = document.createElement('BUTTON');
+                closeButton.classList.add('emails-input__remove-email');
                 closeButton.type = 'button';
                 closeButton.innerText = 'Remove';
 
                 newEmail.innerText = item;
                 if (!checkEmail(item)) {
-                    newEmail.classList.add('wrong-email');
+                    newEmail.classList.add('emails-input__mail-item--wrong');
                 }
                 newEmail.appendChild(closeButton);
-                emailsList.appendChild(newEmail);
+                this.emailsList.appendChild(newEmail);
             });
+
+            this.emailsList.appendChild(this.emailInput);
         }
     }
 
-    function onKeyUp(e) {
+    onKeyUp(e) {
         switch (e.keyCode) {
         case 188:
         case 13:
-            emailInput.value = '';
+            this.addNewEmail(e.target.value);
+            this.emailInput.focus();
             break;
         default:
             break;
         }
     }
 
-    function onKeyDown(e) {
-        switch (e.keyCode) {
-        case 188:
-        case 13:
-            addNewEmail(e.target.value);
-            break;
-        default:
-            break;
-        }
+    onInputBlur(e) {
+        this.addNewEmail(e.target.value);
     }
 
-    function onInputBlur(e) {
-        addNewEmail(e.target.value);
-        emailInput.value = '';
-    }
-
-    function onInputPaste(e) {
-        addNewEmail(e.clipboardData.getData('text'));
+    onInputPaste(e) {
+        this.addNewEmail(e.clipboardData.getData('text'));
+        this.emailInput.focus();
         e.preventDefault();
     }
 
-    function onListClick(e) {
+    onListClick(e) {
         if (e.target.tagName === 'BUTTON') {
-            emailsList.removeChild(e.target.parentNode);
+            this.emailsList.removeChild(e.target.parentNode);
             e.stopPropagation();
         }
     }
-
-    emailInput.addEventListener('keyup', onKeyUp);
-    emailInput.addEventListener('keydown', onKeyDown);
-    emailInput.addEventListener('blur', onInputBlur);
-    emailInput.addEventListener('paste', onInputPaste);
-
-    emailsList.addEventListener('click', onListClick);
-
-    wrapper.appendChild(emailsList);
-    wrapper.appendChild(emailInput);
-    container.appendChild(wrapper);
-
-    return ({
-        addNewEmail,
-    });
 }
 
 export default EmailsInput;
