@@ -5,11 +5,12 @@
     border: 1px solid $color-light-gray;
     border-radius: get-spacing(0.5);
     display: flex;
+    font-family: $main-font-family;
     padding: get-spacing(1);
     
     &__mails-list {
         align-content: flex-start;
-        display: inline-flex;
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         height: $input-height;
@@ -23,8 +24,8 @@
         background-color: $color-transparent-blue;
         border-radius: 100px;
         color: $color-dark-blue;
-        line-height: 171%;
-        font-size: 0.875rem;
+        line-height: $body-line-height;
+        font-size: $body-font-size;
         margin: 0 get-spacing(1) get-spacing(0.5) 0;
         padding: 0 get-spacing(3) 0 get-spacing(1);
         position: relative;
@@ -39,8 +40,9 @@
 
     &__input {
         border: 0;
-        font-size: 0.875rem;
-        line-height: 171%;
+        font-family: $main-font-family;
+        font-size: $body-font-size;
+        line-height: $body-line-height;
         margin-bottom: get-spacing(0.5);
         padding: 0;
     }
