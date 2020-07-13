@@ -80,6 +80,9 @@ This library provide basic styling for the main components. Styles can be easily
 - After the first time you can just run `npm start`.
 - To generate a production build run `npm run build`.
 
+## Known issues
+Testing in IE11 has been complicated due to the lack of open source tools or reliable Virtual Machines, behaviour might be unexpected.
+
 ## Issues or questions?
 If you run into any trouble while running the project or have questions about it, feel free to drop me a message at [amauro85@gmail.com](mailto:amauro85@gmail.com). I will be more than happy to take a look.
 
