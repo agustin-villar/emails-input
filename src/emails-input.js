@@ -2,12 +2,13 @@ import { getEmailsFromInput, checkEmail, createHTMLElement } from './utils/index
 import './styles/main.scss';
 
 const classPrefix = 'emails-input';
-const placeholder = 'add more people...';
-const removeLabel = 'remove';
+const defaultPlaceholder = 'add more people...';
+const defaultRemoveLabel = 'remove';
 
 class EmailsInput {
-    constructor(el) {
+    constructor(el, options) {
         const container = el;
+        this.options = options || {};
         const wrapper = createHTMLElement('DIV', [classPrefix]);
 
         this.emailsList = createHTMLElement('UL', [`${classPrefix}__mails-list`]);
@@ -15,7 +16,7 @@ class EmailsInput {
             'INPUT',
             [`${classPrefix}__input`],
             '',
-            { placeholder },
+            { placeholder: this.options.placeholder || defaultPlaceholder },
         );
         this.emailsList.appendChild(this.emailInput);
 
@@ -44,7 +45,7 @@ class EmailsInput {
                 const closeButton = createHTMLElement(
                     'BUTTON',
                     [`${classPrefix}__remove-email`],
-                    removeLabel,
+                    (this.options.removeLabel || defaultRemoveLabel),
                     { type: 'button' },
                 );
 

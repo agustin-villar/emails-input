@@ -8,7 +8,7 @@ const emailsContainer = document.querySelector('#emails-component');
 const emailsInputB = new EmailsInput(emailsContainer);
 
 emailsInput.addNewEmail('hellothere,lollolo@gmail.com,amauro85@gmail.com');
-console.log(emailsInput.getValidEmailsCount());
+console.log('valid emails count: ', emailsInput.getValidEmailsCount());
 
 emailsInputB.addNewEmail('chocoloco@gmail.com,adsfasf');
-console.log(emailsInputB.getValidEmails('string'));
+console.log('valid emails: ', emailsInputB.getValidEmails('string'));
