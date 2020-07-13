@@ -78,6 +78,7 @@ This library provide basic styling for the main components. Styles can be easily
 - Run `npm install && npm start` if you are running it for the first time.
 - You will be able to access the application under `http://localhost:8000`
 - After the first time you can just run `npm start`.
+- To generate a production build run `npm run build`.
 
 ## Issues or questions?
 If you run into any trouble while running the project or have questions about it, feel free to drop me a message at [amauro85@gmail.com](mailto:amauro85@gmail.com). I will be more than happy to take a look.
