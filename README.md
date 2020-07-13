@@ -1,5 +1,4 @@
 # EmailsInput Library v.1.0.0
-
 Provides an email address editor that allows to introduce multiple addresses at the same time, by typing or pasting them into the field. By default the library will add a new address when:
 
 - The `,` key is pressed
@@ -12,11 +11,9 @@ The component will also validate each email address at runtime by showing a visu
 A demo page with a working example can be checked [here](https://agustin-villar.github.io/emails-input-page/).
 
 ## Prerequisites
-
 - There's no need of external dependencies to use this library.
 
 ## Usage
-
 Add the script to the HTML document where it will be used:
 
 ```html
@@ -75,7 +72,7 @@ myInput.getValidEmails(); // 3
 This library provide basic styling for the main components. Styles can be easily overwritten if needed by targeting the element class selectors.
 
 ## How to run this project for development?
-
+- Clone this repo.
 - You will need, node `v12.18.0` (You can use [nvm](https://github.com/nvm-sh/nvm) to easily change between node versions).
 - Navigate to the project root on a terminal window.
 - Run `npm install && npm start` if you are running it for the first time.
@@ -83,7 +80,6 @@ This library provide basic styling for the main components. Styles can be easily
 - After the first time you can just run `npm start`.
 
 ## Issues or questions?
-
 If you run into any trouble while running the project or have questions about it, feel free to drop me a message at [amauro85@gmail.com](mailto:amauro85@gmail.com). I will be more than happy to take a look.
 
 Thank you! 🤓
