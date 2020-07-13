@@ -64,7 +64,6 @@ class EmailsInput {
         case 13:
             this.addNewEmail(e.target.value);
             this.emailInput.focus();
-            e.stopPropagation();
             break;
         default:
             break;
