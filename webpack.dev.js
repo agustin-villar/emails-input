@@ -7,7 +7,7 @@ const common = require('./webpack.common');
 module.exports = merge(common, {
     mode: 'development',
     entry: {
-        library: './src/index.js',
+        library: './src/emails-input.js',
         usage: './src/dev/usage-script.js',
     },
     devtool: 'source-map',
@@ -25,4 +25,7 @@ module.exports = merge(common, {
             template: path.resolve(__dirname, 'public/index.html'),
         }),
     ],
+    output: {
+        filename: '[name].js',
+    },
 });

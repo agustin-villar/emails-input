@@ -33,7 +33,6 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
         library: 'EmailsInput',
         libraryTarget: 'var',
         libraryExport: 'default',
