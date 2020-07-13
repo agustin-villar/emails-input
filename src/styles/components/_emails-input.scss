@@ -13,15 +13,15 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        height: $input-height;
+        height: $input-height + 2;
         list-style: none;
         margin: 0;
         overflow: scroll;
-        padding: 0;
+        padding: 1px;
     }
 
     &__mail-item {
-        background-color: $color-transparent-blue;
+        background-color: $color-transparent-blue-light;
         border-radius: 100px;
         color: $color-dark-blue;
         line-height: $body-line-height;
@@ -45,6 +45,10 @@
         line-height: $body-line-height;
         margin-bottom: get-spacing(0.5);
         padding: 0;
+
+        &:focus {
+            outline: 1px dashed $color-transparent-blue-dark;
+        }
     }
 
     &__remove-email {
