@@ -1,3 +1,5 @@
+// TODO: Add tests for utility methods
+
 /**
  * Checks if an email address has the right format.
  * @param {string} email - the email address to be checked.

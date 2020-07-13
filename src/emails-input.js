@@ -47,6 +47,7 @@ class EmailsInput {
      * @param {string} textInput
      */
     addNewEmail(textInput) {
+        // TODO: Find a way to focus the input after adding a new email block
         const possibleEmails = getEmailsFromInput(textInput);
 
         if (possibleEmails) {
@@ -130,6 +131,7 @@ class EmailsInput {
      * @returns {([string]|string)}
      */
     getValidEmails(format = 'array') {
+        // TODO: Might be a good idea to handle duplicate emails as well.
         const emails = [];
         this.emailsList.querySelectorAll('li').forEach((node) => {
             emails.push(node.dataset.value);
