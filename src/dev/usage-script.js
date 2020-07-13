@@ -11,7 +11,7 @@ const inputContainer = document.querySelector('#emails-input');
 const emailsInput = new EmailsInput(inputContainer);
 
 const emailsContainer = document.querySelector('#emails-component');
-const emailsInputB = new EmailsInput(emailsContainer);
+const emailsInputB = new EmailsInput(emailsContainer, { placeholder: 'anything goes...' });
 
 emailsInput.addNewEmail('hellothere,lollolo@gmail.com,amauro85@gmail.com');
 console.log('valid emails count: ', emailsInput.getValidEmailsCount());
